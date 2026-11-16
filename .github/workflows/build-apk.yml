@@ -20,12 +20,15 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
+        uses: android-actions/setup-android@v3
 
-      - name: Generate Capacitor Project & Build APK
+      - name: Make Script Executable & Run Builder
         run: |
           chmod +x build-jarvis-apk.sh
           ./build-jarvis-apk.sh
+
+      - name: Build APK with Gradle
+        run: |
           cd jarvis-ai-android/android
           chmod +x gradlew
           ./gradlew assembleDebug
